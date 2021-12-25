@@ -1,0 +1,84 @@
+
+<?php
+session_start();
+
+
+if(!isset($_SESSION["username"])){
+    echo "
+        <script type='text/javascript'>
+            alert('Mohon maaf, anda belum login!')
+            window.location = '../login/index.php';
+        </script>";
+
+        
+}
+if($_SESSION['role'] !="penjual"){
+    echo "
+    <script type='text/javascript'>
+        alert('anda bukan admin')
+        window.location = '../login/index.php';
+    </script>";
+}
+
+require '../function.php';
+$transaksi = query("SELECT * FROM transaksi WHERE status= 'proses'");
+
+
+?>
+<?php
+        include "../koneksi.php";
+        $grandTotal = 0;
+        
+        $query = mysqli_query($conn, "SELECT * FROM barang ");
+        while ($data = mysqli_fetch_array($query)) {
+              $_SESSION['price'] = $data['price'];
+
+        ?>
+        <?php } ?>
+
+
+<?php
+
+include '../layout/layoutpenjual.php';?>
+
+<div class="main1">
+    <h3>Data transaksi</h3>
+
+<table class="styled-table">
+<tr>
+        <th>No</th>
+        <th>Id transaksi</th>
+        <th>tanggal pembelian</th>
+        <th>id pelanggan</th>
+        <th>id barang</th>
+        <th>jumlah barang</th>
+        <th>Harga total</th>
+        <th>status</th>
+        
+        
+    </tr>
+
+
+
+    <?php $i = 1;?>
+    <?php foreach($transaksi as $data) : ?>
+    <tr>
+        <td><?= $i; ?></td>
+        <td><?= $data['id_transaksi']; ?></td>
+        <td><?= $data['tgl_transaksi']; ?></td>
+        <td><?= $data['id_user']; ?></td>
+        <td><?= $data['id_barang']; ?></td> 
+        <td><?= $data['quantity']; ?></td> 
+        
+        <td><?= number_format($data['total_harga']); ?></td>
+        <td><?= $data['status']; ?></td>
+
+        <td>
+            <a href="detail_transaksi.php?id=<?= $data['id_transaksi']; ?>"
+            class="edit" onclick="return "><i class="fa fa-check-double"></i></a>
+
+    </tr>
+    <?php $i++; ?>
+    <?php endforeach;?>
+</table>
+</div>
