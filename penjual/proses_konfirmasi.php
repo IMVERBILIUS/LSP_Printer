@@ -24,18 +24,24 @@
 <?php
 require '../koneksi.php';
 global $conn;
+$idtr=$_POST['id_transaksi'];
+$stok=$_POST['stok'];
+$id_barang=$_POST['id_barang'];
+$quantity=$_POST['quantity'];
 
 
-$sql=mysqli_query($conn, "UPDATE transaksi set status='selesai' where id_transaksi='$_GET[id]'");
-$sql=mysqli_query($conn, "UPDATE barang set stok=(stok-($_SESSION[quantity])) ");
-//ganti id nya
-var_dump($_SESSION);
+$sql=mysqli_query($conn, "UPDATE transaksi set status='selesai' where id_transaksi='$idtr'");
+$sql=mysqli_query($conn, "UPDATE barang set stok=($stok-($quantity))where id='$id_barang' ");
+//nanti bikin form aja biar gampang
+// var_dump($_SESSION);
 
-// if($sql)
-// {
-//     header('location:verifikasi_penjualan.php');
-// }
+if($sql)
+{
+    header('location:verifikasi_penjualan.php');
+}
 
 
 
 ?>
+
+

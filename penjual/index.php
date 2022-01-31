@@ -29,5 +29,5 @@ if($_SESSION['role'] !="penjual"){
 
 include '../layout/layoutpenjual.php';?>
         <div class="main">
-            <h3>Selamat datang di halaman <?php echo $_SESSION ['role'];?></h3>
+            <h3>Selamat datang di halaman <?php echo $_SESSION ['username'];?></h3>
         </div>
