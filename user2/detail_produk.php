@@ -58,7 +58,7 @@ if(empty($_SESSION["shopping_cart"])) {
 <html>
 <head>
 <title>printerstore</title>
-<link rel='stylesheet' href='css/34style1.css' type='text/css' media='all' />
+<link rel='stylesheet' href='css/search.css' type='text/css' media='all' />
 <link rel="stylesheet" href="css/105home.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -80,46 +80,34 @@ if(empty($_SESSION["shopping_cart"])) {
 </div>
 
 <ul class="links-container">
-    <li class="link-item"><a href="#" class="link">home</a></li>
+    <li class="link-item"><a href="index.php" class="link">home</a></li>
     <li class="link-item"><a href="detail.php" class="link">Detail Transaksi</a></li>
     <li class="link-item"><a href="#" class="link">printer2</a></li>
     <li class="link-item"><a href="#" class="link">printer3</a></li>
     <li class="link-item"><a href="#" class="link">printer4</a></li>
 </ul>
 </nav>
-<header class="hero-section">
-    <div class="content">
-        <img src="../foto/logo_gemoy.png" class="logo" alt="">
-        <p class="sub-heading">Gak usah banyak cincong langsung beli</p>
-    </div>
-	</header>
-    
-    <div style="width:1150px; margin:50 auto; ">
+
 
 <?php
 if(!empty($_SESSION["shopping_cart"])) {
 $cart_count = count(array_keys($_SESSION["shopping_cart"]));
 ?>
-<div class="cart_div">
-<a href="cart.php"><img src="cart-icon.png" /> Cart<span><?php echo $cart_count; ?></span></a>
-</div>
 <?php
 }
-$result = mysqli_query($con,"SELECT * FROM `barang`");
+$id= $_GET["id"];
+$result = mysqli_query($con,"SELECT * FROM `barang` WHERE `id` = $id");
 while($row = mysqli_fetch_assoc($result)){
 		echo "
         <div class='product_wrapper'>
         <div class='product-card'>
-			<form method='post' action=''>
-			<input type='hidden' name='code' value=".$row['code']." />
-			<div class=''>
-                <a href='detail_produk.php?id=".$row['id']."'>
-                    <img class='foto1' src='../foto/".$row['image']."' /></a>
-            </div>
-			<div class='product-brand'>".$row['name1']."</div>
-		   	<div class='price'>Rp".$row['price']."</div>
-            <div class='product-short-des'>stok tersedia :".$row['stok']."</div>
-			<button type='submit' class='buy'>Buy Now</button>
+			  <form method='post' action=''>
+			  <input type='hidden' name='code' value=".$row['code']." />
+			  <div class=''><img class='foto1' src='../foto/".$row['image']."' />
+			  <div class='product-brand'>".$row['name1']."</div>
+		   	  <div class='sprice'>Rp".$row['price']."</div>
+                <div class='product-shors-des'>stok tersedia :".$row['stok']."</div>
+			  <button type='submit' class='buy'>Buy Now</button></div>
               
 			  </form>
               </div>

@@ -1,0 +1,119 @@
+.product_wrapper {
+    float: left;
+    padding: 50px;
+    text-align: center;
+    padding-bottom: 5px;
+    margin-bottom: 250px;
+}
+
+.product_wrapper:hover {
+    box-shadow: 0 0 0 2px #e5e5e5;
+}
+
+.product_wrapper .name {
+    font-weight: bold;
+}
+
+.product-brand {
+    margin-left: 450px;
+    margin-bottom: 10px;
+}
+
+.sprice {
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 450px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.product-shors-des {
+    width: 200px;
+    height: 100px;
+    margin-left: 415px;
+    line-height: 20px;
+    opacity: 0.5;
+    text-transform: capitalize;
+}
+
+.product_wrapper .buy {
+    text-transform: uppercase;
+    background: #f17e0a;
+    border: 1px solid #f17e0a;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 100px;
+    margin-left: 170px;
+    margin-top: 25px;
+    position: absolute;
+    transform: translateX(-50%);
+    text-transform: capitalize;
+    border-radius: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.product_wrapper .buy:hover {
+    background: #f17e0a;
+    border-color: #f17e0a;
+}
+
+.message_box .box {
+    margin: 10px 0px;
+    border: 1px solid #2b772e;
+    text-align: center;
+    font-weight: bold;
+    color: #2b772e;
+}
+
+.table td {
+    border-bottom: #F0F0F0 1px solid;
+    padding: 10px;
+}
+
+.cart_div {
+    float: right;
+    font-weight: bold;
+    position: relative;
+}
+
+.cart_div a {
+    color: #000;
+}
+
+.cart_div span {
+    font-size: 12px;
+    line-height: 14px;
+    background: #F68B1E;
+    padding: 2px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: -1px;
+    left: 13px;
+    color: #fff;
+    width: 14px;
+    height: 13px;
+    text-align: center;
+}
+
+.cart .remove {
+    background: none;
+    border: none;
+    color: #0067ab;
+    cursor: pointer;
+    padding: 0px;
+}
+
+.cart .remove:hover {
+    text-decoration: underline;
+}
+
+.foto1 {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    float: left;
+    padding: 5px;
+    width: 400px;
+    height: 380px;
+}
