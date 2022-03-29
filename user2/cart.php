@@ -56,7 +56,7 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
   foreach($_SESSION["shopping_cart"] as &$value){
     if($value['code'] === $_POST["code"]){
         $value['quantity'] = $_POST["quantity"];
-        break; // Stop the loop after we've found the product
+        break; 
     }
 }
 
@@ -126,9 +126,17 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 		<input type='hidden' name='id_barang' value="<?php echo $product["id"]; ?> " />
 				<input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
 				<input type='hidden' name='action'  value="change" />
-				<input type="number" name='quantity' class='quantity' onchange="this.form.submit()" value="">
+					<select name='quantity' class='quantity' onchange="this.form.submit()">
+					
+
+						<option <?php if($product["quantity"]==1) echo "selected";?> value="1">1</option>
+						<option <?php if($product["quantity"]==2) echo "selected";?> value="2">2</option>
+						<option <?php if($product["quantity"]==3) echo "selected";?> value="3">3</option>
+						<option <?php if($product["quantity"]==4) echo "selected";?> value="4">4</option>
+						<option <?php if($product["quantity"]==5) echo "selected";?> value="5">5</option>
+					</select>
 					<input type="hidden" name="total_harga" value="<?php echo $total_price += ($product["price"]*$product["quantity"]); ?>" class="form-produk">
-					<input type="text" style="border:none" name="" value="<?php echo $total_barang += ($product["quantity"]); ?>" readonly>
+					<input type="hidden" name="" value="<?php echo $total_barang += ($product["quantity"]); ?>" class="form-produk">
 					<button type='submit' name="cuk">chek out</button>
 					
 			</form>
@@ -156,7 +164,7 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 	
 </table>	
 <?php
-        include "../koneksi.php";
+       
         
         $query = mysqli_query($conn, "SELECT * FROM barang ");
         while ($data = mysqli_fetch_array($query)) {
@@ -182,10 +190,11 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 			  <input type='hidden' name='id_barang' value="<?php echo $product["id"]; ?> " />
 					  <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
 					  <input type='hidden' name='action'  value="change" />
-					  <span style="display: none;">
-					  <input type="text" name="quantity" value="<?php echo $total_barang; ?>">
+
+					
+					<input type="text" style="border: none;" name="quantity" value="Totalbarang : <?php echo $total_barang; ?>">
 	  
-					  </span>
+
 						  <input type="hidden" name="total_harga" value="<?php echo $total_price ; ?>" class="form-produk">
 						  <button type='submit' name="cuk">chek out</button>
 	  
